@@ -1,0 +1,29 @@
+* {
+  background-color: black;
+  color: white;
+}
+
+#title {
+  font-family: "Bai Jamjuree", serif;
+  font-size: 38px;
+  font-style: oblique;
+}
+
+.operators {
+  height: 100px;
+  width: 100px;
+  font-family: "Bai Jamjuree", serif;
+  font-size: 35px;
+}
+
+#real-input {
+  height: 100px;
+  width: 410px;
+  font-family: "Bai Jamjuree", serif;
+  font-size: 45px;
+  text-align: right;
+}
+
+#zero {
+  width: 205px;
+}

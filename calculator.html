@@ -1,9 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Chiraf's Pocket Calculator Plus</title>
+    <title>The Chief's Pocket Calculator Plus</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree|PT+Serif|Slabo+27px" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/>
+    <script type="text/javascript" src="calculator.js"></script>
   </head>
   <body>
-    
+    <div id="title">
+      <h1 align="center">The Chief's Pocket Calculator Plus</h1>
+    </div>
+    <div id="user-input">
+      <form align="center">
+          <p>
+            <input type="number" id="real-input" value="0"/>
+          </p>
+        <table align="center">
+          <tr>
+            <td><input type="button" id="clear" value="AC" class="operators"/></td>
+            <td><input type="button" id="plus-minus" value="+/-" class="operators"/></td>
+            <td><input type="button" id="percent" value="%" class="operators"/></td>
+            <td><input type="button" id="divide" value="/" class="operators"/></td>
+          </tr>
+
+          <tr>
+            <td><input type="button" id="seven" value="7" class="operators"/></td>
+            <td><input type="button" id="eight" value="8" class="operators"/></td>
+            <td><input type="button" id="nine" value="9" class="operators"/></td>
+            <td><input type="button" id="multiplication" value="x" class="operators"/></td>
+          </tr>
+
+          <tr>
+            <td><input type="button" id="four" value="4" class="operators"/></td>
+            <td><input type="button" id="five" value="5" class="operators"/></td>
+            <td><input type="button" id="six" value="6" class="operators"/></td>
+            <td><input type="button" id="subtraction" value="-" class="operators"/></td>
+          </tr>
+
+          <tr>
+            <td><input type="button" id="one" value="1" class="operators"/></td>
+            <td><input type="button" id="two" value="2" class="operators"/></td>
+            <td><input type="button" id="three" value="3" class="operators"/></td>
+            <td><input type="button" id="addition" value="+" class="operators"/></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><input type="button" id="zero" value="0" class="operators"/></td>
+            <td><input type="button" id="decimal" value="." class="operators"/></td>
+            <td><input type="button" id="equal" value="=" class="operators"/></td>
+          </tr>
+
+        </table>
+      </form>
+    </div>
   </body>
 </html>
