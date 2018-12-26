@@ -7,6 +7,7 @@
   font-family: "Bai Jamjuree", serif;
   font-size: 38px;
   font-style: oblique;
+  margin: 2px;
 }
 
 .operators {
@@ -17,11 +18,25 @@
 }
 
 #real-input {
-  height: 100px;
-  width: 410px;
+  height: 90px;
+  width: 400px;
   font-family: "Bai Jamjuree", serif;
-  font-size: 45px;
+  font-size: 60px;
   text-align: right;
+  border: 2px solid white;
+  margin: 2px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+#intermediaries {
+  font-family: "Bai Jamjuree", serif;
+  font-size: 20px;
+  padding: 2.5px;
+  height: 30px;
+  width: 410px;
+  text-align: right;
+  margin: 2px;
 }
 
 #zero {
