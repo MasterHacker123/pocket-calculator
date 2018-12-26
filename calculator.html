@@ -2,55 +2,74 @@
 <html>
   <head>
     <title>The Chief's Pocket Calculator Plus</title>
-    <link rel="stylesheet" type="text/css" href="calculator.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree|PT+Serif|Slabo+27px" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/>
-    <script type="text/javascript" src="calculator.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
     <div id="title">
       <h1 align="center">The Chief's Pocket Calculator Plus</h1>
     </div>
-    <div id="user-input">
-          <p align="center">
-            <input type="number" id="real-input" value="0"/>
-          </p>
-        <table align="center">
-          <tr>
-            <td><input type="button" id="clear" value="AC" class="operators"/></td>
-            <td><input type="button" id="plus-minus" value="+/-" class="operators"/></td>
-            <td><input type="button" id="percent" value="%" class="operators"/></td>
-            <td><input type="button" id="divide" value="/" class="operators"/></td>
-          </tr>
+    <div id="user-input" align="center">
+      <p id="intermediaries"></p>
+      <p id="real-input">0</p>
+      <table align="center">
+        <tr>
+          <td><button id="clear" class="operators" onclick="allClear()">AC</button></td>
+          <td><button id="plus-minus" class="operators" onclick="plusMinus()">+/-</button></td>
+          <td><button id="percent" class="operators" onclick="percent()">%</button></td>
+          <td><button id="division" class="operators" onclick="divide()">/</button></td>
+        </tr>
+         
+        <tr>            
+          <td><button id="seven" class="operators" onclick="clickNum(7)">7</button></td>
+          <td><button id="eight" class="operators" onclick="clickNum(8)">8</button></td>
+          <td><button id="nine" class="operators" onclick="clickNum(9)">9</button></td>
+          <td><button id="multiplication" class="operators" onclick="multiply()">*</button></td>
+        </tr>
 
-          <tr>
-            <td><input type="button" id="seven" value="7" class="operators" onclick="clickNum(7)"/></td>
-            <td><input type="button" id="eight" value="8" class="operators" onclick="clickNum(8)"/></td>
-            <td><input type="button" id="nine" value="9" class="operators" onclick="clickNum(9)"/></td>
-            <td><input type="button" id="multiplication" value="x" class="operators"/></td>
-          </tr>
+        <tr>
+          <td><button id="four" class="operators" onclick="clickNum(4)">4</button></td>
+          <td><button id="five" class="operators" onclick="clickNum(5)">5</button></td>
+          <td><button id="six" class="operators" onclick="clickNum(6)">6</button></td>
+          <td><button id="subtraction" class="operators" onclick="subtract()">-</button></td>          
+        </tr>
 
-          <tr>
-            <td><input type="button" id="four" value="4" class="operators" onclick="clickNum(4)"/></td>
-            <td><input type="button" id="five" value="5" class="operators" onclick="clickNum(5)"/></td>
-            <td><input type="button" id="six" value="6" class="operators" onclick="clickNum(6)"/></td>
-            <td><input type="button" id="subtraction" value="-" class="operators"/></td>
-          </tr>
+        <tr>
+          <td><button id="one" class="operators" onclick="clickNum(1)">1</button></td>
+          <td><button id="two" class="operators" onclick="clickNum(2)">2</button></td>
+          <td><button id="three" class="operators" onclick="clickNum(3)">3</button></td>
+          <td><button id="addition" class="operators" onclick="add()">+</button></td>
+        </tr>
 
-          <tr>
-            <td><input type="button" id="one" value="1" class="operators" onclick="clickNum(1)"/></td>
-            <td><input type="button" id="two" value="2" class="operators" onclick="clickNum(2)"/></td>
-            <td><input type="button" id="three" value="3" class="operators" onclick="clickNum(3)"/></td>
-            <td><input type="button" id="addition" value="+" class="operators"/></td>
-          </tr>
+        <tr>
+          <td colspan="2"><button id="zero" class="operators" onclick="clickNum(0)">0</button></td>
+          <td><button id="decimal" class="operators" onclick="decimal()">.</button></td>
+          <td><button id="equal" class="operators" onclick="equals()">=</button></td>
+        </tr>
 
-          <tr>
-            <td colspan="2"><input type="button" id="zero" value="0" class="operators" onclick="zero()"/></td>
-            <td><input type="button" id="decimal" value="." class="operators"/></td>
-            <td><input type="button" id="equal" value="=" class="operators"/></td>
-          </tr>
+        <tr>
+          <td><button id="constant" class="operators" onclick="clickPi()">pi</button></td>
+          <td><button id="sine" class="operators" onclick="sin()">sin</button></td>
+          <td><button id="cosine" class="operators" onclick="cos()">cos</button></td>
+          <td><button id="tangent" class="operators" onclick="tan()">tan</button></td>
+        </tr>
 
-        </table>
+        <tr>
+          <td><button id="factorial" class="operators" onclick="factorial()">x!</button></td>
+          <td><button id="square" class="operators" onclick="square()">x^2</button></td>
+          <td><button id="cube" class="operators" onclick="cube()">x^3</button></td>
+          <td><button id="power" class="operators" onclick="power()">x^y</button></td>
+        </tr>
+
+        <tr>
+          <td><button id="sqrt" class="operators" onclick="sqrt()">x^1/2</button></td>
+          <td><button id="cubert" class="operators" onclick="cubert()">x^1/3</button></td>
+          <td><button id="root" class="operators" onclick="root()">x^1/y</button></td>
+          <td><button id="extra" class="operators" >2018</button></td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
