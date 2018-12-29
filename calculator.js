@@ -3,7 +3,8 @@ let flagTwo;
 let flagThree = 3;
 let value;
 let n;
-// 3 * 3 * 3 return 9 and then 9 * 3? Worry ab case?
+// 3 * 3 * 3 return 9 and then 9 * 3? Worry ab case? if stmt
+// for delineation intermediaries are automatic... 
 // irrational root then square repeating decimals
 function clickNum(number) {
   let p = document.getElementById('real-input');
@@ -12,20 +13,20 @@ function clickNum(number) {
     n = 0;
     flag = 0;
   }  
-  if (flagTwo == 2) {
-    n += String(number);
-  } else if (p.innerHTML == "0") {
+  if (p.innerHTML == "0") {
     n = String(number);
+    p.innerHTML = n;
   } else {
     n += String(number);
-  }
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    p.innerHTML = Number(n).toExponential([5]);
-  }
+    if (Number(n) < 1000000000 && Number(n) >= 0) {
+      p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else if (Number(n) > -1000000000 && Number(n) < 0) {
+      p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else {
+      p.innerHTML = Number(n).toExponential([5]);
+    }
+  }  
+  
   flagThree = 0;
 }
 
@@ -48,15 +49,17 @@ function allClear() {
   pTwo.innerHTML = "";
   n = 0;
 }
-// decimal returns after first decimal digit is entered
+
 function decimal() {
   let p = document.getElementById('real-input');
-  if (flagThree == 3) {
+  if (flagThree == 3 || flag == 1) {
     n = 0 + ".";
+    p.innerHTML = n;
+    flag = 0;
   } else {
     n += ".";
+  p.innerHTML = n;  
   } 
-  p.innerHTML = Number(n).toLocaleString('arab');
   flagTwo = 2;
 }
 
@@ -206,9 +209,9 @@ function equals() {
     pTwo.innerHTML = p.innerHTML;
     result = 0;
   }
-  
+
   n = result;
-  
+
   if (result < 1000000000 && result >= 0) {
     p.innerHTML = result.toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (result > -1000000000 && result < 0) {
