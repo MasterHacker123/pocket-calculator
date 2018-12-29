@@ -206,7 +206,9 @@ function equals() {
     pTwo.innerHTML = p.innerHTML;
     result = 0;
   }
-
+  
+  n = result;
+  
   if (result < 1000000000 && result >= 0) {
     p.innerHTML = result.toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (result > -1000000000 && result < 0) {
