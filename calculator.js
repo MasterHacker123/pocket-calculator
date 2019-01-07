@@ -12,7 +12,7 @@ function clickNum(number) {
     p.innerHTML = 0;
     n = 0;
     flag = 0;
-  }  
+  }
   if (p.innerHTML == "0") {
     n = String(number);
     p.innerHTML = n;
@@ -25,7 +25,7 @@ function clickNum(number) {
     } else {
       p.innerHTML = Number(n).toExponential([5]);
     }
-  }  
+  }
   flagThree = 0;
 }
 
@@ -38,7 +38,7 @@ function clickPi() {
   } else {
     n = Math.PI.toFixed(9);
     p.innerHTML = Math.PI.toFixed(9);
-  } 
+  }
 }
 
 function allClear() {
@@ -53,7 +53,7 @@ function allClear() {
 
 function decimal() {
   let p = document.getElementById('real-input');
-  
+
   if (flagThree == 3 || flag == 1) {
     n = 0 + ".";
     p.innerHTML = n;
@@ -69,7 +69,7 @@ function decimal() {
     } else {
       p.innerHTML = Number(n).toExponential([5]);
     }
-  } 
+  }
   flagTwo = 2;
 }
 
@@ -94,7 +94,7 @@ let integ = 0;
 function multiply() {
   let p = document.getElementById('real-input');
   if (flagFour == 4) {
-    pseudoEquals();  
+    pseudoEquals();
     operation = "multiplication";
   } else {
     num = Number(n);
@@ -108,7 +108,7 @@ function multiply() {
     }
     p.innerHTML = 0;
     operation = "multiplication";
-  } 
+  }
   n = 0;
   flagTwo = 0;
   flagFour = 4;
@@ -117,7 +117,7 @@ function multiply() {
 function divide() {
   let p = document.getElementById('real-input');
   if (flagFour == 4) {
-    pseudoEquals();  
+    pseudoEquals();
     operation = "division";
   } else {
     num = Number(n);
@@ -131,7 +131,7 @@ function divide() {
     }
     p.innerHTML = 0;
     operation = "division";
-  } 
+  }
   n = 0;
   flagTwo = 0;
   flagFour = 4;
@@ -140,7 +140,7 @@ function divide() {
 function add() {
   let p = document.getElementById('real-input');
   if (flagFour == 4) {
-    pseudoEquals();  
+    pseudoEquals();
     operation = "addition";
   } else {
     num = Number(n);
@@ -154,16 +154,17 @@ function add() {
     }
     p.innerHTML = 0;
     operation = "addition";
-  } 
+  }
   n = 0;
   flagTwo = 0;
   flagFour = 4;
+  operationTwo = "addition";
 }
 
 function subtract() {
   let p = document.getElementById('real-input');
   if (flagFour == 4) {
-    pseudoEquals();  
+    pseudoEquals();
     operation = "subtraction";
   } else {
     num = Number(n);
@@ -177,10 +178,11 @@ function subtract() {
     }
     p.innerHTML = 0;
     operation = "subtraction";
-  } 
+  }
   n = 0;
   flagTwo = 0;
   flagFour = 4;
+  operationTwo = "subtraction";
 }
 
 function power() {
@@ -231,13 +233,13 @@ function equals() {
   if (integ != 0) {
     if (operation == "multiplication") {
       result = integ * numTwo;
-    }  
+    }
     if (operation == "division") {
       result = integ / numTwo;
     }
     if (operation == "addition") {
       result = (integ) + (numTwo);
-    } 
+    }
     if (operation == "subtraction") {
       result = (integ) - (numTwo);
     }
@@ -262,13 +264,13 @@ function equals() {
   } else {
     if (operation == "multiplication") {
       result = num * numTwo;
-    }  
+    }
     if (operation == "division") {
       result = num / numTwo;
     }
     if (operation == "addition") {
       result = (num) + (numTwo);
-    } 
+    }
     if (operation == "subtraction") {
       result = (num) - (numTwo);
     }
@@ -310,17 +312,107 @@ function pseudoEquals() {
   let p = document.getElementById('real-input');
   let numTwo = Number(n);
   let pTwo = document.getElementById('intermediaries');
+  let operationTwo = "";
+  let subNum = 0;
   if (operation == "multiplication") {
-    resultTwo = num * numTwo;
-  }  
-  if (operation == "division") {
-    resultTwo = num / numTwo;
+    if (operationTwo == "addition") {
+      resultTwo = subNum + num * numTwo;
+      operationTwo = "";
+      subNum = 0;
+    } else if (operationTwo == "subtraction") {
+      resultTwo = subNum - num * numtwo;
+      operationTwo = "";
+      subNum = 0;
+    } else {
+      resultTwo = num * numTwo;
+    }
+    integ = resultTwo;
+    n = resultTwo;
+    num = n;
+
+    if (resultTwo < 1000000000 && resultTwo >= 0) {
+      p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else if (resultTwo > -1000000000 && resultTwo < 0) {
+      p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else {
+      p.innerHTML = resultTwo.toExponential([5]);
+    }
+
+    if (resultTwo < 1000000000 && resultTwo >= 0) {
+      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else if (resultTwo > -1000000000 && resultTwo < 0) {
+      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else {
+      pTwo.innerHTML = resultTwo.toExponential([5]);
+    }
   }
-  if (operation == "addition") {
-    resultTwo = (num) + (numTwo);
-  } 
-  if (operation == "subtraction") {
-    resultTwo = (num) - (numTwo);
+  if (operation == "division") {
+    if (operationTwo == "addition") {
+      resultTwo = subNum + num / numTwo;
+      operationTwo = "";
+      subNum = 0;
+    } else if (operationTwo == "subtraction") {
+      resultTwo = subNum - num / numtwo;
+      operationTwo = "";
+      subNum = 0;
+    } else {
+      resultTwo = num / numTwo;
+    }
+    integ = resultTwo;
+    n = resultTwo;
+    num = n;
+
+    if (resultTwo < 1000000000 && resultTwo >= 0) {
+      p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else if (resultTwo > -1000000000 && resultTwo < 0) {
+      p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else {
+      p.innerHTML = resultTwo.toExponential([5]);
+    }
+
+    if (resultTwo < 1000000000 && resultTwo >= 0) {
+      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else if (resultTwo > -1000000000 && resultTwo < 0) {
+      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
+    } else {
+      pTwo.innerHTML = resultTwo.toExponential([5]);
+    }
+  }
+  if (operation == "addition" && operationTwo == "addition") {
+    resultTwo = (subNum) + (num);
+    operationTwo = "addition";
+    subNum = num;
+    num = numtwo;
+    p.innerHTML = 0;
+  } else if (operation == "addition" && operationTwo == "subtraction") {
+    resultTwo = (subNum) - (num);
+    operationTwo = "addition";
+    subNum = num;
+    num = numtwo;
+    p.innerHTML = 0;
+  } else if (operation == "addition") {
+    operationTwo = "addition";
+    subNum = num;
+    num = numtwo;
+    p.innerHTML = 0;
+  }
+  if (operation == "subtraction" && operationTwo == "addition") {
+    resultTwo = (subNum) + (num);
+    operationTwo = "subtraction";
+    subNum = num;
+    num = numtwo;
+    p.innerHTML = 0;
+  } else if (operation == "subtraction" && operationTwo == "subtraction") {
+    resultTwo = (subNum) - (num);
+    operationTwo = "subtraction";
+    subNum = num;
+    num = numtwo;
+    p.innerHTML = 0;
+  } else if (operation == "subtraction") {
+    operationTwo = "subtraction";
+    subNum = num;
+    num = numtwo;
+    p.innerHTML = 0;
   }
   if (operation == "power") {
     resultTwo = num ** numTwo;
@@ -340,25 +432,7 @@ function pseudoEquals() {
     resultTwo = 0;
   }
 
-  integ = resultTwo;
-  n = resultTwo;
-  num = n;
-  
-  if (resultTwo < 1000000000 && resultTwo >= 0) {
-    p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (resultTwo > -1000000000 && resultTwo < 0) {
-    p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    p.innerHTML = resultTwo.toExponential([5]);
-  }
 
-  if (resultTwo < 1000000000 && resultTwo >= 0) {
-    pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (resultTwo > -1000000000 && resultTwo < 0) {
-    pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = resultTwo.toExponential([5]);
-  }
   flagOne = 1;
   flagTwo = 0;
   operation = "";
@@ -464,7 +538,7 @@ function factorial() {
     let x = Number(n);
     while (x > 1) {
       n = Number(n) * (x - 1);
-      x--;  
+      x--;
     }
     if (Number(n) < 1000000000 && Number(n) >= 0) {
       p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -480,7 +554,7 @@ function factorial() {
   }
 }
 
-function square() {  
+function square() {
   let p = document.getElementById('real-input');
   let pTwo = document.getElementById('intermediaries');
   if (Number(n) < 1000000000 && Number(n) >= 0) {
