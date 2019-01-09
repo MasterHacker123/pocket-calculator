@@ -4,8 +4,7 @@ let flagThree = 3;
 let flagFour = 0;
 let value;
 let n;
-// decimal pt for large number division and the nums themselves small font or something
-// get error messages going up (mine are zero)
+// factorial and squares 
 function clickNum(number) {
   let p = document.getElementById('real-input');
   if (flag == 1) {
@@ -237,16 +236,24 @@ function equals() {
     pTwo.innerHTML += " and " + numTwo.toExponential([5]);
   }
   if (integ != 0) {
-    if (operation == "multiplication") {
+    if (operation == "multiplication" && operationTwo == "addition") {
+      result = integ + num * numTwo;
+    } else if (operation == "multiplication" && operationTwo == "subtraction") {
+      result = integ - num * numTwo;
+    } else if (operation == "multiplication") {
       result = integ * numTwo;
     }
-    if (operation == "division") {
+    if (operation == "division" && operationTwo == "addition") {
+      result = integ + num / numTwo;
+    } else if (operation == "division" && operationTwo == "subtraction") {
+      result = integ - num / numTwo;
+    } else if (operation == "division") {
       result = integ / numTwo;
     }
     if (operation == "addition") {
-      result = (integ) + (numTwo);
+      result = (subNum) + (numTwo);
     }
-    if (operation == "subtraction") {
+    if (operationTwo == "subtraction") {
       result = (integ) - (numTwo);
     }
     if (operation == "power") {
@@ -266,6 +273,8 @@ function equals() {
       pTwo.innerHTML = p.innerHTML;
       result = 0;
     }
+    operationTwo = "";
+    operationThree = "";
     integ = 0;
   } else {
     if (operation == "multiplication") {
@@ -320,6 +329,7 @@ function pseudoEquals() {
   let pTwo = document.getElementById('intermediaries');
   if (operation == "multiplication" || operation == "division") {
     num = numTwo;
+    integ = subNum;
     // operationThree = something, clone the opTwo and opThree variables running order
   }
   if (operationThree == "multiplication") {
@@ -521,7 +531,6 @@ function pseudoEquals() {
 
   flagOne = 1;
   flagTwo = 0;
-  operation = "";
 }
 
 function percent() {
