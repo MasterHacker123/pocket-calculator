@@ -318,10 +318,8 @@ function pseudoEquals() {
   let p = document.getElementById('real-input');
   let numTwo = Number(n);
   let pTwo = document.getElementById('intermediaries');
-  if (operation == "multiplication" || operation == "division") {
-    num = numTwo;
-    // operationThree = something, clone the opTwo and opThree variables running order
-  }
+  
+  
   if (operationThree == "multiplication") {
     if (operationTwo == "addition") {
       resultTwo = subNum + num * numTwo;
@@ -335,6 +333,8 @@ function pseudoEquals() {
       subNum = resultTwo;
     } else {
       resultTwo = subNum * numTwo;
+      subNum = resultTwo;
+      operationThree = "";
     }
     integ = resultTwo;
     n = resultTwo;
@@ -358,18 +358,23 @@ function pseudoEquals() {
   }
   if (operationThree == "division") {
     if (operationTwo == "addition") {
-      resultTwo = subNum + num / numTwo;
-      subNum = 0;
+      resultTwo = subNum + num * numTwo;
+      operationTwo = "";
+      operationThree = "";
+      subNum = resultTwo;
     } else if (operationTwo == "subtraction") {
-      resultTwo = subNum - num / numtwo;
-      subNum = 0;
+      resultTwo = subNum - num * numTwo;
+      operationTwo = "";
+      operationThree = "";
+      subNum = resultTwo;
     } else {
       resultTwo = subNum / numTwo;
+      subNum = resultTwo;
+      operationThree = "";
     }
     integ = resultTwo;
     n = resultTwo;
-    num = n;
-
+    // num = n;
     if (resultTwo < 1000000000 && resultTwo >= 0) {
       p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
     } else if (resultTwo > -1000000000 && resultTwo < 0) {
@@ -386,9 +391,7 @@ function pseudoEquals() {
       pTwo.innerHTML = resultTwo.toExponential([5]);
     }
   }
-  if (operation == "addition" || operation == "subtraction") {
-    subNum = numTwo;
-  }
+  
   if (operation == "addition" && operationTwo == "addition") {
     num = numTwo;
     resultTwo = (subNum) + (num);
@@ -483,6 +486,13 @@ function pseudoEquals() {
       pTwo.innerHTML = resultTwo.toExponential([5]);
     }
   } 
+  if (operation == "multiplication" || operation == "division") {
+    num = numTwo;
+    // operationThree = something, clone the opTwo and opThree variables running order
+  }
+  if (operation == "addition" || operation == "subtraction") {
+    subNum = numTwo;
+  }
   if (operation == "power") {
     resultTwo = num ** numTwo;
   }
