@@ -4,33 +4,43 @@
 }
 
 #title {
-  font-family: "Bai Jamjuree", serif;
-  font-size: 38px;
-  font-style: oblique;
-  margin: 2px;
+  font-family: "Roboto Mono", serif;
+  font-size: 18px;
+  margin: 0;
+  color: rgb(247, 242, 242);
 }
 
 .operators {
   height: 100px;
   width: 100px;
-  font-family: "Bai Jamjuree", serif;
+  font-family: "Roboto Mono", serif;
+  font-weight: bold;
   font-size: 35px;
+}
+
+#superscript {
+  font-size: 20px;
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
 }
 
 #real-input {
   height: 90px;
   width: 400px;
-  font-family: "Bai Jamjuree", serif;
-  font-size: 60px;
+  font-family: "Roboto Mono", serif;
+  font-weight: bold;
+  font-size: 35px;
   text-align: right;
-  border: 2px solid white;
+  border: 2px solid rgb(247, 242, 242);
   margin: 2px;
   padding: 5px;
   overflow: hidden;
+  color: rgb(247, 242, 242);
 }
 
 #intermediaries {
-  font-family: "Bai Jamjuree", serif;
+  font-family: "Roboto Mono", serif;
   font-size: 20px;
   padding: 2.5px;
   height: 30px;
@@ -41,4 +51,185 @@
 
 #zero {
   width: 205px;
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#sqrt {
+  width: 205px;
+}
+
+#one {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#two {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#three {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#four {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#five {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#six {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#seven {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#eight {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#nine {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#decimal {
+  background-color: darkgray;
+  color: black;
+  border-color: black;
+}
+
+#division {
+  background-color: rgb(214, 205, 205);
+  color: black;
+  border-color: black;
+}
+
+#addition {
+  background-color: rgb(214, 205, 205);
+  color: black;
+  border-color: black;
+}
+
+#multiplication {
+  background-color: rgb(214, 205, 205);
+  color: black;
+  border-color: black;
+}
+
+#subtraction {
+  background-color: rgb(214, 205, 205);
+  color: black;
+  border-color: black;
+}
+
+#equal {
+  background-color: rgb(214, 205, 205);
+  color: black;
+  border-color: black;
+}
+
+#clear {
+  background-color: orange;
+  color: black;
+  border-color: black;
+}
+
+#plus-minus {
+  background-color: orange;
+  color: black;
+  border-color: black;
+}
+
+#percent {
+  background-color: orange;
+  color: black;
+  border-color: black;
+}
+
+#constant {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#sine {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#cosine {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#tangent {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#factorial {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#square {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#cube {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#sqrt {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#cubert {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#root {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
+}
+
+#power {
+  background-color: rgb(247, 242, 242);
+  color: black;
+  border-color: black;
 }
