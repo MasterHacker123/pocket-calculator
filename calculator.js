@@ -7,8 +7,10 @@ let n;
 // factorial and squares 
 function clickNum(number) {
   let p = document.getElementById('real-input');
+  let pTwo = document.getElementById('intermediaries');
   if (flag == 1) {
     p.innerHTML = 0;
+    pTwo.innerHTML = "";
     n = 0;
     flag = 0;
   }
@@ -42,9 +44,9 @@ function clickPi() {
 
 function allClear() {
   let p = document.getElementById('real-input');
-  p.innerHTML = 0;
   let pTwo = document.getElementById('intermediaries');
   pTwo.innerHTML = "";
+  p.innerHTML = 0;
   n = 0;
   flagTwo = 0;
   flagFour = 0;
@@ -54,7 +56,6 @@ function allClear() {
 
 function decimal() {
   let p = document.getElementById('real-input');
-
   if (flagThree == 3 || flag == 1) {
     n = 0 + ".";
     p.innerHTML = n;
@@ -101,14 +102,6 @@ function multiply() {
     pseudoEquals();
   } else {
     subNum = Number(n);
-    let pTwo = document.getElementById('intermediaries');
-    if (Number(n) < 1000000000 && Number(n) >= 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (Number(n) > -1000000000 && Number(n) < 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = Number(n).toExponential([5]);
-    }
     p.innerHTML = 0;
     operation = "multiplication";
   }
@@ -125,14 +118,6 @@ function divide() {
     pseudoEquals();
   } else {
     subNum = Number(n);
-    let pTwo = document.getElementById('intermediaries');
-    if (Number(n) < 1000000000 && Number(n) >= 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (Number(n) > -1000000000 && Number(n) < 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = Number(n).toExponential([5]);
-    }
     p.innerHTML = 0;
     operation = "division";
   }
@@ -149,14 +134,6 @@ function add() {
     pseudoEquals();
   } else {
     subNum = Number(n);
-    let pTwo = document.getElementById('intermediaries');
-    if (Number(n) < 1000000000 && Number(n) >= 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (Number(n) > -1000000000 && Number(n) < 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = Number(n).toExponential([5]);
-    }
     p.innerHTML = 0;
     operation = "addition";
   }
@@ -173,14 +150,6 @@ function subtract() {
     pseudoEquals();
   } else {
     subNum = Number(n);
-    let pTwo = document.getElementById('intermediaries');
-    if (Number(n) < 1000000000 && Number(n) >= 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (Number(n) > -1000000000 && Number(n) < 0) {
-      pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = Number(n).toExponential([5]);
-    }
     p.innerHTML = 0;
     operation = "subtraction";
   }
@@ -193,14 +162,6 @@ function subtract() {
 function power() {
   let p = document.getElementById('real-input');
   num = Number(n);
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   p.innerHTML = 0;
   n = 0;
   operation = "power";
@@ -210,14 +171,6 @@ function power() {
 function root() {
   let p = document.getElementById('real-input');
   num = Number(n);
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   p.innerHTML = 0;
   n = 0;
   operation = "root";
@@ -226,15 +179,8 @@ function root() {
 
 function equals() {
   let p = document.getElementById('real-input');
-  let numTwo = Number(n);
   let pTwo = document.getElementById('intermediaries');
-  if (numTwo < 1000000000 && numTwo >= 0) {
-    pTwo.innerHTML += " and " + numTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (numTwo > -1000000000 && numTwo < 0) {
-    pTwo.innerHTML += " and " + numTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML += " and " + numTwo.toExponential([5]);
-  }
+  let numTwo = Number(n);
   if (integ != 0) {
     if (operation == "multiplication" && operationTwo == "addition") {
       result = integ + num * numTwo;
@@ -270,8 +216,7 @@ function equals() {
       }
     }
     if (operation == "") {
-      pTwo.innerHTML = p.innerHTML;
-      result = 0;
+      result = integ;
     }
     operationTwo = "";
     operationThree = "";
@@ -295,6 +240,7 @@ function equals() {
     if (operation == "root") {
       if (num < 0 && (numTwo % 2) == 0) {
         result = 0;
+        pTwo.innerHTML = "Error";
       } else if (num < 0 && (numTwo % 2) != 0) {
         result = (num * -1) ** (1 / numTwo);
         result = result * -1;
@@ -303,11 +249,10 @@ function equals() {
       }
     }
     if (operation == "") {
-      pTwo.innerHTML = p.innerHTML;
-      result = 0;
+      result = p.innerHTML;
     }
   }
-
+// 1+1 ====== and 3*/
   n = result;
 
   if (result < 1000000000 && result >= 0) {
@@ -317,6 +262,10 @@ function equals() {
   } else {
     p.innerHTML = result.toExponential([5]);
   }
+
+  if (result == Infinity) {
+    pTwo.innerHTML = "Error";
+  }
   flag = 1;
   flagTwo = 0;
   flagFour = 0;
@@ -325,8 +274,8 @@ function equals() {
 
 function pseudoEquals() {
   let p = document.getElementById('real-input');
-  let numTwo = Number(n);
   let pTwo = document.getElementById('intermediaries');
+  let numTwo = Number(n);
   if (operation == "multiplication" || operation == "division") {
     num = numTwo;
     integ = subNum;
@@ -365,14 +314,6 @@ function pseudoEquals() {
     } else {
       p.innerHTML = resultTwo.toExponential([5]);
     }
-
-    if (resultTwo < 1000000000 && resultTwo >= 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (resultTwo > -1000000000 && resultTwo < 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = resultTwo.toExponential([5]);
-    }
   }
   if (operationThree == "division") {
     if (operationTwo == "addition") {
@@ -406,14 +347,6 @@ function pseudoEquals() {
     } else {
       p.innerHTML = resultTwo.toExponential([5]);
     }
-
-    if (resultTwo < 1000000000 && resultTwo >= 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (resultTwo > -1000000000 && resultTwo < 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = resultTwo.toExponential([5]);
-    }
   }
 
   if (operation == "addition" && operationTwo == "addition") {
@@ -431,14 +364,6 @@ function pseudoEquals() {
     } else {
       p.innerHTML = resultTwo.toExponential([5]);
     }
-
-    if (resultTwo < 1000000000 && resultTwo >= 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (resultTwo > -1000000000 && resultTwo < 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = resultTwo.toExponential([5]);
-    }
   } else if (operation == "addition" && operationTwo == "subtraction") {
     num = numTwo;
     resultTwo = (subNum) - (num);
@@ -453,14 +378,6 @@ function pseudoEquals() {
       p.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
     } else {
       p.innerHTML = resultTwo.toExponential([5]);
-    }
-
-    if (resultTwo < 1000000000 && resultTwo >= 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (resultTwo > -1000000000 && resultTwo < 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = resultTwo.toExponential([5]);
     }
   }
   if (operation == "subtraction" && operationTwo == "addition") {
@@ -478,14 +395,6 @@ function pseudoEquals() {
     } else {
       p.innerHTML = resultTwo.toExponential([5]);
     }
-
-    if (resultTwo < 1000000000 && resultTwo >= 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (resultTwo > -1000000000 && resultTwo < 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = resultTwo.toExponential([5]);
-    }
   } else if (operation == "subtraction" && operationTwo == "subtraction") {
     num = numTwo;
     resultTwo = (subNum) - (num);
@@ -501,14 +410,6 @@ function pseudoEquals() {
     } else {
       p.innerHTML = resultTwo.toExponential([5]);
     }
-
-    if (resultTwo < 1000000000 && resultTwo >= 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else if (resultTwo > -1000000000 && resultTwo < 0) {
-      pTwo.innerHTML = resultTwo.toLocaleString('arab', {maximumFractionDigits: '9'});
-    } else {
-      pTwo.innerHTML = resultTwo.toExponential([5]);
-    }
   }
   if (operation == "power") {
     resultTwo = num ** numTwo;
@@ -516,6 +417,7 @@ function pseudoEquals() {
   if (operation == "root") {
     if (num < 0 && (numTwo % 2) == 0) {
       resultTwo = 0;
+      pTwo.innerHTML = "Error";
     } else if (num < 0 && (numTwo % 2) != 0) {
       resultTwo = (num * -1) ** (1 / numTwo);
       resultTwo = result * -1;
@@ -524,10 +426,12 @@ function pseudoEquals() {
     }
   }
   if (operation == "") {
-    pTwo.innerHTML = p.innerHTML;
     resultTwo = 0;
   }
 
+  if (resultTwo == Infinity) {
+    pTwo.innerHTML = "Error";
+  }
 
   flagOne = 1;
   flagTwo = 0;
@@ -535,14 +439,6 @@ function pseudoEquals() {
 
 function percent() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Number(n) / 100;
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -558,14 +454,6 @@ function percent() {
 
 function sin() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Math.sin(Number(n));
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -579,14 +467,6 @@ function sin() {
 
 function cos() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Math.cos(Number(n));
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -601,14 +481,10 @@ function cos() {
 function tan() {
   let p = document.getElementById('real-input');
   let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Math.tan(Number(n));
+  if (n == -Infinity) {
+    pTwo.innerHTML = "Error";
+  }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (Number(n) > -1000000000 && Number(n) < 0) {
@@ -621,14 +497,6 @@ function tan() {
 
 function factorial() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   if ((Number(n) % 1) == 0) {
     let x = Number(n);
     while (x > 1) {
@@ -651,14 +519,6 @@ function factorial() {
 
 function square() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Number(n) ** 2;
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -672,14 +532,6 @@ function square() {
 
 function cube() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Number(n) ** 3;
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -693,14 +545,6 @@ function cube() {
 
 function sqrt() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Number(n) ** (1 / 2);
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -714,14 +558,6 @@ function sqrt() {
 
 function cubert() {
   let p = document.getElementById('real-input');
-  let pTwo = document.getElementById('intermediaries');
-  if (Number(n) < 1000000000 && Number(n) >= 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else if (Number(n) > -1000000000 && Number(n) < 0) {
-    pTwo.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
-  } else {
-    pTwo.innerHTML = Number(n).toExponential([5]);
-  }
   n = Number(n) ** (1 / 3);
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
