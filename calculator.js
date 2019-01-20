@@ -2,9 +2,9 @@ let flag;
 let flagTwo = 0;
 let flagThree = 3;
 let flagFour = 0;
+let flagFive = 0;
 let value;
-let n;
-// factorial and squares 
+let n = 0;
 function clickNum(number) {
   let p = document.getElementById('real-input');
   let pTwo = document.getElementById('intermediaries');
@@ -14,8 +14,17 @@ function clickNum(number) {
     n = 0;
     flag = 0;
   }
+  if (flagFive == 5) {
+    flagFive = 0;
+    falseNum = 0;
+    falseInteg = 0;
+    operation = "";
+  }
   if (p.innerHTML == "0") {
     n = String(number);
+    p.innerHTML = n;
+  } else if (p.innerHTML == "0." || p.innerHTML == "0.0" || p.innerHTML == "0.00" || p.innerHTML == "0.000" || p.innerHTML == "0.0000" || p.innerHTML == "0.00000" || p.innerHTML == "0.000000" || p.innerHTML == "0.0000000") {
+    n += String(number);
     p.innerHTML = n;
   } else {
     n += String(number);
@@ -40,6 +49,12 @@ function clickPi() {
     n = Math.PI.toFixed(9);
     p.innerHTML = Math.PI.toFixed(9);
   }
+  if (flagFive == 5) {
+    flagFive = 0;
+    falseNum = 0;
+    falseInteg = 0;
+    operation = "";
+  }
 }
 
 function allClear() {
@@ -50,8 +65,12 @@ function allClear() {
   n = 0;
   flagTwo = 0;
   flagFour = 0;
+  operation = "";
   operationTwo = "";
   operationThree = "";
+  flagFive = 0;
+  falseNum = 0;
+  falseInteg = 0;  
 }
 
 function decimal() {
@@ -73,6 +92,12 @@ function decimal() {
     }
   }
   flagTwo = 2;
+  if (flagFive == 5) {
+    flagFive = 0;
+    operation = "";
+    falseNum = 0;
+    falseInteg = 0;
+  }  
 }
 
 function plusMinus() {
@@ -108,6 +133,9 @@ function multiply() {
   n = 0;
   flagTwo = 0;
   flagFour = 4;
+  flagFive = 0;
+  falseNum = 0;
+  falseInteg = 0;
   operationThree = "multiplication";
 }
 
@@ -124,6 +152,9 @@ function divide() {
   n = 0;
   flagTwo = 0;
   flagFour = 4;
+  flagFive = 0;
+  falseNum = 0;
+  falseInteg = 0;
   operationThree = "division";
 }
 
@@ -140,6 +171,9 @@ function add() {
   n = 0;
   flagTwo = 0;
   flagFour = 4;
+  flagFive = 0;
+  falseNum = 0;
+  falseInteg = 0;
   operationTwo = "addition";
 }
 
@@ -156,6 +190,9 @@ function subtract() {
   n = 0;
   flagTwo = 0;
   flagFour = 4;
+  flagFive = 0;
+  falseNum = 0;
+  falseInteg = 0;
   operationTwo = "subtraction";
 }
 
@@ -166,6 +203,9 @@ function power() {
   n = 0;
   operation = "power";
   flagTwo = 0;
+  falseNum = 0;
+  falseInteg = 0;
+  flagFive = 0;
 }
 
 function root() {
@@ -175,23 +215,39 @@ function root() {
   n = 0;
   operation = "root";
   flagTwo = 0;
+  falseNum = 0;
+  falseInteg = 0;
+  flagFive = 0;
 }
+let falseNum = 0;
+let falseInteg = 0; 
 
 function equals() {
   let p = document.getElementById('real-input');
   let pTwo = document.getElementById('intermediaries');
   let numTwo = Number(n);
-  if (integ != 0) {
+  if (flagFive == 5) {
+    if (operation == "addition") {
+      result = falseInteg + falseNum;
+    } else if (operation == "subtraction") {
+      result = falseInteg - falseNum;
+    } else if (operation == "multiplication") {
+      result = falseInteg * falseNum;
+    } else if (operation == "division") {
+      result = falseInteg / falseNum;
+    }
+    falseInteg = result;
+  } else if (integ != 0) {
     if (operation == "multiplication" && operationTwo == "addition") {
       result = integ + num * numTwo;
     } else if (operation == "multiplication" && operationTwo == "subtraction") {
-      result = integ - num * numTwo;
+      result = integ - (num * numTwo);
     } else if (operation == "multiplication") {
       result = integ * numTwo;
     }
     if (operation == "division" && operationTwo == "addition") {
       result = integ + num / numTwo;
-    } else if (operation == "division" && operationTwo == "subtraction") {
+    } else if (operation == "division" && operationTwo == "subtraction"){
       result = integ - num / numTwo;
     } else if (operation == "division") {
       result = integ / numTwo;
@@ -199,7 +255,7 @@ function equals() {
     if (operation == "addition") {
       result = (subNum) + (numTwo);
     }
-    if (operationTwo == "subtraction") {
+    if (operation == "subtraction") {
       result = (integ) - (numTwo);
     }
     if (operation == "power") {
@@ -218,6 +274,8 @@ function equals() {
     if (operation == "") {
       result = integ;
     }
+    falseNum = Number(n);
+    falseInteg = result; 
     operationTwo = "";
     operationThree = "";
     integ = 0;
@@ -251,8 +309,11 @@ function equals() {
     if (operation == "") {
       result = p.innerHTML;
     }
+    falseNum = Number(n);
+    falseInteg = result; 
+    operationTwo = "";
+    operationThree = "";
   }
-// 1+1 ====== and 3*/
   n = result;
 
   if (result < 1000000000 && result >= 0) {
@@ -263,13 +324,13 @@ function equals() {
     p.innerHTML = result.toExponential([5]);
   }
 
-  if (result == Infinity) {
+  if (result == Infinity || result == -Infinity) {
     pTwo.innerHTML = "Error";
   }
   flag = 1;
   flagTwo = 0;
   flagFour = 0;
-  operation = "";
+  flagFive = 5;
 }
 
 function pseudoEquals() {
@@ -279,7 +340,6 @@ function pseudoEquals() {
   if (operation == "multiplication" || operation == "division") {
     num = numTwo;
     integ = subNum;
-    // operationThree = something, clone the opTwo and opThree variables running order
   }
   if (operationThree == "multiplication") {
     if (operationTwo == "addition") {
@@ -411,25 +471,11 @@ function pseudoEquals() {
       p.innerHTML = resultTwo.toExponential([5]);
     }
   }
-  if (operation == "power") {
-    resultTwo = num ** numTwo;
-  }
-  if (operation == "root") {
-    if (num < 0 && (numTwo % 2) == 0) {
-      resultTwo = 0;
-      pTwo.innerHTML = "Error";
-    } else if (num < 0 && (numTwo % 2) != 0) {
-      resultTwo = (num * -1) ** (1 / numTwo);
-      resultTwo = result * -1;
-    } else {
-      resultTwo = num ** (1 / numTwo);
-    }
-  }
   if (operation == "") {
     resultTwo = 0;
   }
 
-  if (resultTwo == Infinity) {
+  if (resultTwo == Infinity || result == -Infinity) { 
     pTwo.innerHTML = "Error";
   }
 
@@ -450,11 +496,14 @@ function percent() {
   flag = 1;
 }
 
-// degrees? radians? switch?
-
 function sin() {
   let p = document.getElementById('real-input');
-  n = Math.sin(Number(n));
+  let pTwo = document.getElementById('intermediaries');
+  if (n == 3.141592654 || n == 6.283185308) {
+    n = 0;
+  } else {
+    n = Math.sin(Number(n));
+  }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (Number(n) > -1000000000 && Number(n) < 0) {
@@ -467,7 +516,12 @@ function sin() {
 
 function cos() {
   let p = document.getElementById('real-input');
-  n = Math.cos(Number(n));
+  let pTwo = document.getElementById('intermediaries');
+  if (n == 1.570796327 || n == 4.712388981) {
+    n = 0;
+  } else {
+    n = Math.cos(Number(n));
+  }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (Number(n) > -1000000000 && Number(n) < 0) {
@@ -481,9 +535,11 @@ function cos() {
 function tan() {
   let p = document.getElementById('real-input');
   let pTwo = document.getElementById('intermediaries');
-  n = Math.tan(Number(n));
-  if (n == -Infinity) {
+  if (n == 1.570796327 || n == 4.712388981) {
+    n = 0;
     pTwo.innerHTML = "Error";
+  } else {
+    n = Math.tan(Number(n));
   }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
@@ -545,7 +601,13 @@ function cube() {
 
 function sqrt() {
   let p = document.getElementById('real-input');
-  n = Number(n) ** (1 / 2);
+  let pTwo = document.getElementById('intermediaries');
+  if (n < 0) {
+    n = 0;
+    pTwo.innerHTML = "Error";
+  } else {
+    n = Number(n) ** (1 / 2);
+  }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (Number(n) > -1000000000 && Number(n) < 0) {
