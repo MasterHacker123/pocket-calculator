@@ -575,7 +575,11 @@ function factorial() {
 
 function square() {
   let p = document.getElementById('real-input');
+  let pTwo = document.getElementById('intermediaries');
   n = Number(n) ** 2;
+  if (n == Infinity) {
+    pTwo.innerHTML = "Error";
+  }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (Number(n) > -1000000000 && Number(n) < 0) {
@@ -588,7 +592,11 @@ function square() {
 
 function cube() {
   let p = document.getElementById('real-input');
+  let pTwo = document.getElementById('intermediaries');
   n = Number(n) ** 3;
+  if (n == Infinity || n == -Infinity) {
+    pTwo.innerHTML = "Error";
+  }
   if (Number(n) < 1000000000 && Number(n) >= 0) {
     p.innerHTML = Number(n).toLocaleString('arab', {maximumFractionDigits: '9'});
   } else if (Number(n) > -1000000000 && Number(n) < 0) {
