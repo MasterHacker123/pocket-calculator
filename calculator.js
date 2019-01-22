@@ -55,6 +55,7 @@ function clickPi() {
     falseInteg = 0;
     operation = "";
   }
+  flag = 1;
 }
 
 function allClear() {
